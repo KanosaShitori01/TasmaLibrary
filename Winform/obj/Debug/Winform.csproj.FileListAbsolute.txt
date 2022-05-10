@@ -1,0 +1,13 @@
+C:\Users\Admin\source\repos\TasmaControl\Winform\bin\Debug\Winform.exe.config
+C:\Users\Admin\source\repos\TasmaControl\Winform\bin\Debug\Winform.exe
+C:\Users\Admin\source\repos\TasmaControl\Winform\bin\Debug\Winform.pdb
+C:\Users\Admin\source\repos\TasmaControl\Winform\obj\Debug\Winform.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\TasmaControl\Winform\obj\Debug\Winform.Properties.Resources.resources
+C:\Users\Admin\source\repos\TasmaControl\Winform\obj\Debug\Winform.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\TasmaControl\Winform\obj\Debug\Winform.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\TasmaControl\Winform\obj\Debug\Winform.exe
+C:\Users\Admin\source\repos\TasmaControl\Winform\obj\Debug\Winform.pdb
+C:\Users\Admin\source\repos\TasmaControl\Winform\obj\Debug\Winform.Form1.resources
+C:\Users\Admin\source\repos\TasmaControl\Winform\bin\Debug\TasmaControl.dll
+C:\Users\Admin\source\repos\TasmaControl\Winform\bin\Debug\TasmaControl.pdb
+C:\Users\Admin\source\repos\TasmaControl\Winform\obj\Debug\Winform.csproj.CopyComplete
