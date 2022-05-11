@@ -9,11 +9,37 @@ namespace TasmaControl
 {
     public class TasmaMain
     {
+        public static bool SESSION = false;
         public static string StrangeDate(string date)
         {
             string[] dates = date.Split('/');
             Array.Reverse(dates);
             return String.Join("-", dates);
+        }
+        public static bool XLDangNhap(string tentable, Dictionary<string,object> inforTK, SqlConnection ketnoi)
+        {
+            bool res = false;
+            string infor = "";
+            foreach(var i in inforTK)
+            {
+                infor += String.Format("{0}='{1}' AND ", i.Key, i.Value);
+            }
+            infor = infor.Substring(0, infor.Length - 4);
+            string query = String.Format("SELECT * FROM {0} WHERE {1}", tentable, infor);
+            SqlCommand cmd = new SqlCommand(query, ketnoi);
+            cmd.Connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            if(reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    res = true;
+                }
+                reader.Close();
+                //cmd.Connection.Close();
+            }
+            cmd.Connection.Close();
+            return res;
         }
         public static DataTable LietKeTuDo(string lenh, SqlConnection ketnoi)
         {
@@ -21,6 +47,14 @@ namespace TasmaControl
             SqlDataAdapter adap = new SqlDataAdapter(lenh, ketnoi);
             adap.Fill(dt);
             return dt;
+        }
+        public static DataSet LKDuLieu_Set(string tentable, SqlConnection ketnoi)
+        {
+            string query = "SELECT * FROM " + tentable;
+            DataSet ds = new DataSet();
+            SqlDataAdapter adap = new SqlDataAdapter(query, ketnoi);
+            adap.Fill(ds);
+            return ds;
         }
         public static DataTable LietKeDuLieu(string tentable, SqlConnection ketnoi)
         {
@@ -50,7 +84,11 @@ namespace TasmaControl
             {
                 strKey += dl.Key + ",";
                 try {
-                    strValue += String.Format("{0},", Convert.ToInt32(dl.Value));
+                    object val = "";
+                    if (dl.Value.ToString().Length > 9)
+                        val = String.Format("N'{0}'", dl.Value);
+                    else val = Convert.ToDouble(dl.Value);
+                    strValue += String.Format("{0},", val);
                 }
                 catch {
                     strValue += String.Format("N'{0}',", dl.Value);
@@ -77,7 +115,11 @@ namespace TasmaControl
             {
                 try
                 {
-                    strRes += String.Format("{0}={1},", dl.Key, Convert.ToInt32(dl.Value));
+                    object val = "";
+                    if (dl.Value.ToString().Length > 9)
+                        val = String.Format("'{0}'", dl.Value);
+                    else val = Convert.ToDouble(dl.Value);
+                    strRes += String.Format("{0}={1},", dl.Key, val);
                 }
                 catch
                 {
